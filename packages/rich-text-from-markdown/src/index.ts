@@ -276,7 +276,7 @@ function expandParagraphWithInlineImages(node: MarkdownNode): MarkdownNode[] {
   }
   let imageNodeIndices = [];
   for (let i = 0; i < node.children.length; i++) {
-    if (node.children[i].type === 'image') {
+    if (node.children[i].type === 'image' || node.childen[i].type === 'html') {
       imageNodeIndices.push(i);
     }
   }
@@ -354,7 +354,7 @@ export async function richTextFromMarkdown(
   md: string,
   fallback: FallbackResolver = () => Promise.resolve(null),
 ): Promise<Document> {
-  const processor = unified().use(markdown, { commonmark: true });
+  const processor = unified().use(markdown, { commonmark: true, pedantic: true });
   const tree = processor.parse(md);
   const ast = prepareMdAST(tree);
   return await astToRichTextDocument(ast, fallback);
