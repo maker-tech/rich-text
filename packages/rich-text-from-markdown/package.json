@@ -1,6 +1,6 @@
 {
   "name": "@contentful/rich-text-from-markdown",
-  "version": "15.16.2",
+  "version": "15.16.3",
   "description": "convert markdown to rich text",
   "keywords": [
     "rich-text",
